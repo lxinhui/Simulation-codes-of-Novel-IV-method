@@ -1,0 +1,146 @@
+setwd("D:/")
+library(ggplot2)
+library(readxl)
+#----------------------------------------------SAMPLE SIZE-----------------------------------------------------------
+N=seq(200,5000,200)
+D_N <- read.csv("general-N1_use.csv")
+
+tiff(file = "aaaageneral-N.tiff", width = 3000, height = 1300, units = "px", res = 200)
+split.screen(c(1,3))
+screen(1)
+plot(D_N$bias22~N,type="b", col="firebrick",pch=2,lwd=2,ylim = c(-0.15,0.08),xlab="Sample size",ylab = "Bias",cex=0.8)
+lines(D_N$bias33~N,type="b", col="royalblue3",pch=3,lwd=2,cex=0.8)
+lines(D_N$bias44~N,type="b", col="chartreuse4",pch=4,lwd=2,cex=0.8)
+abline(h=0,lty=3,lwd=2)
+legend("topleft",c("Crude Association","IV","Novel IV"),pch=c(4,3,2),col=c("chartreuse4","royalblue3","firebrick"))
+
+screen(2)
+plot(D_N$se22~N,type="b", col="firebrick",pch=2,lwd=2,ylim = c(0,0.45),xlab="Sample size",ylab = "SE",cex=0.8)
+lines(D_N$se33~N,type="b", col="royalblue3",pch=3,lwd=2,cex=0.8)
+lines(D_N$se44~N,type="b", col="chartreuse4",pch=4,lwd=2,cex=0.8)
+abline(h=0,lty=3,lwd=2)
+legend("topleft",c("Crude Association","IV","Novel IV"),pch=c(4,3,2),col=c("chartreuse4","royalblue3","firebrick"))
+
+screen(3)
+plot(D_N$mse22~N,type="b", col="firebrick",pch=2,lwd=2,ylim = c(0,0.13),xlab="Sample size",ylab = "MSE",cex=0.8)
+lines(D_N$mse33~N,type="b", col="royalblue3",pch=3,lwd=2,cex=0.8)
+lines(D_N$mse44~N,type="b", col="chartreuse4",pch=4,lwd=2,cex=0.8)
+abline(h=0,lty=3,lwd=2)
+legend("topleft",c("Crude Association","IV","Novel IV"),pch=c(4,3,2),col=c("chartreuse4","royalblue3","firebrick"))
+
+dev.off()
+
+#----------------------------------------------CAUSAL EFFECT OF G ON X-----------------------------------------------------------
+N=seq(0.3,2,0.1)
+D_N <- read.csv("general-a11_use.csv")
+
+tiff(file = "aaaageneral-GX.tiff", width = 3000, height = 1300, units = "px", res = 200)
+split.screen(c(1,3))
+screen(1)
+plot(D_N$bias22~N,type="b", col="firebrick",pch=2,lwd=2,ylim = c(-0.14,0.08),xlab="Ln(OR) of G on X",ylab = "Bias",cex=0.8)
+lines(D_N$bias33~N,type="b", col="royalblue3",pch=3,lwd=2,cex=0.8)
+lines(D_N$bias44~N,type="b", col="chartreuse4",pch=4,lwd=2,cex=0.8)
+abline(h=0,lty=3,lwd=2)
+legend("topleft",c("Crude Association","IV","Novel IV"),pch=c(4,3,2),col=c("chartreuse4","royalblue3","firebrick"))
+
+screen(2)
+plot(D_N$se22~N,type="b", col="firebrick",pch=2,lwd=2,ylim = c(0,0.3),xlab="Ln(OR) of G on X",ylab = "SE",cex=0.8)
+lines(D_N$se33~N,type="b", col="royalblue3",pch=3,lwd=2,cex=0.8)
+lines(D_N$se44~N,type="b", col="chartreuse4",pch=4,lwd=2,cex=0.8)
+abline(h=0,lty=3,lwd=2)
+legend("topleft",c("Crude Association","IV","Novel IV"),pch=c(4,3,2),col=c("chartreuse4","royalblue3","firebrick"))
+
+screen(3)
+plot(D_N$mse22~N,type="b", col="firebrick",pch=2,lwd=2,ylim = c(0,0.058),xlab="Ln(OR) of G on X",ylab = "MSE",cex=0.8)
+lines(D_N$mse33~N,type="b", col="royalblue3",pch=3,lwd=2,cex=0.8)
+lines(D_N$mse44~N,type="b", col="chartreuse4",pch=4,lwd=2,cex=0.8)
+abline(h=0,lty=3,lwd=2)
+legend("topleft",c("Crude Association","IV","Novel IV"),pch=c(4,3,2),col=c("chartreuse4","royalblue3","firebrick"))
+
+dev.off()
+
+#----------------------------------------------CAUSAL EFFECT OF X ON Y-----------------------------------------------------------
+N=seq(0.1,1.7,0.1)
+D_N <- read.csv("general-b11_use.csv")
+
+tiff(file = "aaaageneral-XY.tiff", width = 3000, height = 1300, units = "px", res = 200)
+split.screen(c(1,3))
+screen(1)
+plot(D_N$bias22~N,type="b", col="firebrick",pch=2,lwd=2,ylim = c(-0.16,0.1),xlab="Ln(OR) of X on Y",ylab = "Bias",cex=0.8)
+lines(D_N$bias33~N,type="b", col="royalblue3",pch=3,lwd=2,cex=0.8)
+lines(D_N$bias44~N,type="b", col="chartreuse4",pch=4,lwd=2,cex=0.8)
+abline(h=0,lty=3,lwd=2)
+legend("topleft",c("Crude Association","IV","Novel IV"),pch=c(4,3,2),col=c("chartreuse4","royalblue3","firebrick"))
+
+screen(2)
+plot(D_N$se22~N,type="b", col="firebrick",pch=2,lwd=2,ylim = c(0,0.08),xlab="Ln(OR) of X on Y",ylab = "SE",cex=0.8)
+lines(D_N$se33~N,type="b", col="royalblue3",pch=3,lwd=2,cex=0.8)
+lines(D_N$se44~N,type="b", col="chartreuse4",pch=4,lwd=2,cex=0.8)
+abline(h=0,lty=3,lwd=2)
+legend("topleft",c("Crude Association","IV","Novel IV"),pch=c(4,3,2),col=c("chartreuse4","royalblue3","firebrick"))
+
+screen(3)
+plot(D_N$mse22~N,type="b", col="firebrick",pch=2,lwd=2,ylim = c(0,0.02),xlab="Ln(OR) of X on Y",ylab = "MSE",cex=0.8)
+lines(D_N$mse33~N,type="b", col="royalblue3",pch=3,lwd=2,cex=0.8)
+lines(D_N$mse44~N,type="b", col="chartreuse4",pch=4,lwd=2,cex=0.8)
+abline(h=0,lty=3,lwd=2)
+legend("topleft",c("Crude Association","IV","Novel IV"),pch=c(4,3,2),col=c("chartreuse4","royalblue3","firebrick"))
+
+dev.off()
+#----------------------------------------------MISCLASSIFICATION OF X1-----------------------------------------------------------
+N=seq(0.02,0.26,0.02)
+D_N <- read.csv("general-x_use.csv")
+
+tiff(file = "aaaageneral-xx1.tiff", width = 3000, height = 1300, units = "px", res = 200)
+split.screen(c(1,3))
+screen(1)
+plot(D_N$bias22~N,type="b", col="firebrick",pch=2,lwd=2,ylim = c(-0.2,0.16),xlab="The misclassification probability of X's measurements",ylab = "Bias",cex=0.8)
+lines(D_N$bias33~N,type="b", col="royalblue3",pch=3,lwd=2,cex=0.8)
+lines(D_N$bias44~N,type="b", col="chartreuse4",pch=4,lwd=2,cex=0.8)
+abline(h=0,lty=3,lwd=2)
+legend("topleft",c("Crude Association","IV","Novel IV"),pch=c(4,3,2),col=c("chartreuse4","royalblue3","firebrick"))
+
+screen(2)
+plot(D_N$se22~N,type="b", col="firebrick",pch=2,lwd=2,ylim = c(0,0.1),xlab="The misclassification probability of X's measurements",ylab = "SE",cex=0.8)
+lines(D_N$se33~N,type="b", col="royalblue3",pch=3,lwd=2,cex=0.8)
+lines(D_N$se44~N,type="b", col="chartreuse4",pch=4,lwd=2,cex=0.8)
+abline(h=0,lty=3,lwd=2)
+legend("topleft",c("Crude Association","IV","Novel IV"),pch=c(4,3,2),col=c("chartreuse4","royalblue3","firebrick"))
+
+screen(3)
+plot(D_N$mse22~N,type="b", col="firebrick",pch=2,lwd=2,ylim = c(0,0.03),xlab="The misclassification probability of X's measurements",ylab = "MSE",cex=0.8)
+lines(D_N$mse33~N,type="b", col="royalblue3",pch=3,lwd=2,cex=0.8)
+lines(D_N$mse44~N,type="b", col="chartreuse4",pch=4,lwd=2,cex=0.8)
+abline(h=0,lty=3,lwd=2)
+legend("topleft",c("Crude Association","IV","Novel IV"),pch=c(4,3,2),col=c("chartreuse4","royalblue3","firebrick"))
+
+dev.off()
+
+#----------------------------------------------MISCLASSIFICATION OF Y1-----------------------------------------------------------
+N=seq(0.02,0.3,0.02)
+D_N <- read.csv("general-y_use.csv")
+
+tiff(file = "aaaageneral-yy1.tiff", width = 3000, height = 1300, units = "px", res = 200)
+split.screen(c(1,3))
+screen(1)
+plot(D_N$bias22~N,type="b", col="firebrick",pch=2,lwd=2,ylim = c(-0.2,0.16),xlab="The misclassification probability of Y's measurements",ylab = "Bias",cex=0.8)
+lines(D_N$bias33~N,type="b", col="royalblue3",pch=3,lwd=2,cex=0.8)
+lines(D_N$bias44~N,type="b", col="chartreuse4",pch=4,lwd=2,cex=0.8)
+abline(h=0,lty=3,lwd=2)
+legend("topleft",c("Crude Association","IV","Novel IV"),pch=c(4,3,2),col=c("chartreuse4","royalblue3","firebrick"))
+
+screen(2)
+plot(D_N$se22~N,type="b", col="firebrick",pch=2,lwd=2,ylim = c(0,0.1),xlab="The misclassification probability of Y's measurements",ylab = "SE",cex=0.8)
+lines(D_N$se33~N,type="b", col="royalblue3",pch=3,lwd=2,cex=0.8)
+lines(D_N$se44~N,type="b", col="chartreuse4",pch=4,lwd=2,cex=0.8)
+abline(h=0,lty=3,lwd=2)
+legend("topleft",c("Crude Association","IV","Novel IV"),pch=c(4,3,2),col=c("chartreuse4","royalblue3","firebrick"))
+
+screen(3)
+plot(D_N$mse22~N,type="b", col="firebrick",pch=2,lwd=2,ylim = c(0,0.04),xlab="The misclassification probability of Y's measurements",ylab = "MSE",cex=0.8)
+lines(D_N$mse33~N,type="b", col="royalblue3",pch=3,lwd=2,cex=0.8)
+lines(D_N$mse44~N,type="b", col="chartreuse4",pch=4,lwd=2,cex=0.8)
+abline(h=0,lty=3,lwd=2)
+legend("topleft",c("Crude Association","IV","Novel IV"),pch=c(4,3,2),col=c("chartreuse4","royalblue3","firebrick"))
+
+dev.off()
